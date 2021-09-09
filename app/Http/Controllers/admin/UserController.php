@@ -13,7 +13,7 @@ class UserController extends Controller
     public function create()
     {
         // 获取当前用户信息
-        $uid = session('admin_userinfo')->id;
+        $uid = session('admin_userinfo')->id ?? 0;
         $admin_userinfo = DB::table('users')->where('id',$uid)->first();
     	return view('admin.user.create',['admin_userinfo'=>$admin_userinfo]);
     }

@@ -13,7 +13,7 @@ class IndexController extends Controller
     public function index()
     {
         // 获取当前用户信息
-        $uid = session('admin_userinfo')->id;
+        $uid = isset(session('admin_userinfo')->id) ?? 0;
         $admin_userinfo = DB::table('users')->where('id',$uid)->first();
     	return view('admin.index',['admin_userinfo'=>$admin_userinfo]);
     }
